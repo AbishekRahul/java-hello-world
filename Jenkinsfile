@@ -19,4 +19,9 @@ pipeline {
              sh "mvn test"
          }
      }
+     stage('SonarQube Analysis') {
+    withSonarQubeEnv() {
+      sh "mvn clean verify sonar:sonar"
+    }
+  }
 }
