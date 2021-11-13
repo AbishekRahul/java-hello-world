@@ -19,10 +19,11 @@ pipeline {
              sh "mvn test"
          }
      }
-     stage('SonarQube Analysis') {
-      steps {
-      sh "mvn clean verify sonar:sonar"
-    }
-   }
+     stage('Sonar Analysis') {
+     withSonarQubeEnv('sonar', envOnly: true) {
+  // This expands the evironment variables SONAR_CONFIG_NAME, SONAR_HOST_URL, SONAR_AUTH_TOKEN that can be used by any script.
+  println ${env.SONAR_HOST_URL} 
+  }
+     }
  }
 }
