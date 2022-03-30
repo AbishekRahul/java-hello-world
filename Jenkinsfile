@@ -20,6 +20,6 @@ pipeline {
         always {
             echo 'Sending job status over email!'
             emailext body: '$DEFAULT_CONTENT', recipientProviders: [buildUser(), culprits(), developers(), requestor()], subject: 'Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}', to: 'k.a.rahulabi@gmail.com'
-        }
+       }
   }
 }
