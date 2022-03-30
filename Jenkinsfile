@@ -19,14 +19,7 @@ pipeline {
  post {
         always {
             echo 'Sending job status over email!'
-            emailext subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}",
-                        body: '$DEFAULT_CONTENT',
-                        recipientProviders: [
-                            [$class: 'CulpritsRecipientProvider'],
-                            [$class: 'DevelopersRecipientProvider'],
-                            [$class: 'RequesterRecipientProvider']
-                        ], 
-                        to: 'k.a.rahulabi@gmail.com'
+            emailext body: '$DEFAULT_CONTENT', recipientProviders: [buildUser(), culprits(), developers(), requestor()], subject: 'Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}', to: 'k.a.rahulabi@gmail.com'
         }
   }
 }
