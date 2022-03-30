@@ -13,7 +13,7 @@ pipeline {
      stage('MVN Test') {
          steps {
              bat "mvn test"
-         }
+        }
      }
  }
 }
