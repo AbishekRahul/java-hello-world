@@ -26,7 +26,6 @@ pipeline {
                             [$class: 'DevelopersRecipientProvider'],
                             [$class: 'RequesterRecipientProvider']
                         ], 
-                        replyTo: '$DEFAULT_REPLYTO',
                         to: 'k.a.rahulabi@gmail.com'
         }
   }
